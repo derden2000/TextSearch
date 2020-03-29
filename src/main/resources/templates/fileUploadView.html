@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title>TextSearch APP</title>
+
+    <link th:href="@{css/bootstrap-social.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" href="https://hb.bizmrg.com/antonshu/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h2>Submitted Files</h2>
+<table>
+<!--    <th:each="pr : ${products}">-->
+        <tr th:each="file : ${files}">
+            <td>OriginalFileName:</td>
+            <td th:text="${file.getOriginalFilename()}">${file.originalFilename}</td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+<!--            <td th:text="${file.getContentType()}">${file.contentType}</td>-->
+        </tr>
+<!--    </th:forEach>-->
+</table>
+<br>
+<h2>Content of file</h2>
+<table style="width:300px; height:150px;">
+    <span>Текст для поиска: <a th:href="@{'#' + ${sw}}" th:text="${sw}"></a></span>
+        <tr th:each="str : ${strings}">
+<!--            <td>New String:</td>-->
+                <td th:utext="${str}" name="ta2">${file.originalFilename}</td>
+        </tr>
+<!--    <tr>Текст для поиска: </tr>-->
+<!--    <tr>-->
+<!--        <div style="width:300px; height:150px;" th:each="str : ${strings}"><p th:utext="${str}"></p>Текстовая область</div>-->
+<!--    </tr>-->
+</table>
+</body>
+</html>
